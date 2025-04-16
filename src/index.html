@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notes App</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        margin: 20px;
+      }
+
+      h1,
+      h2 {
+        text-align: center;
+      }
+
+      #note-form {
+        margin-bottom: 20px;
+        padding: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      #note-form div {
+        margin-bottom: 10px;
+      }
+
+      #note-form label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+
+      #note-form input[type="text"],
+      #note-form textarea {
+        width: calc(100% - 12px);
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+        box-sizing: border-box;
+      }
+
+      #note-form button {
+        padding: 10px 15px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+
+      #notes-container h2 {
+        margin-top: 30px;
+      }
+
+      #notes-list {
+        list-style: none;
+        padding: 0;
+      }
+
+      .note-item {
+        border: 1px solid #eee;
+        padding: 15px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .note-item h3 {
+        margin-top: 0;
+        margin-bottom: 5px;
+      }
+
+      .note-item .delete-button {
+        background-color: #dc3545;
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+
+      #loading-indicator {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 20px;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border-radius: 5px;
+        z-index: 1000;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>My Simple Notes App</h1>
+
+    <div id="note-form">
+      <h2>Add New Note</h2>
+      <form id="add-note-form">
+        <div>
+          <label for="title">Title:</label>
+          <input type="text" id="title" name="title" required />
+        </div>
+        <div>
+          <label for="body">Body:</label>
+          <textarea id="body" name="body" rows="5" required></textarea>
+        </div>
+        <button type="submit">Add Note</button>
+      </form>
+    </div>
+
+    <div id="notes-container">
+      <h2>Your Notes</h2>
+      <ul id="notes-list"></ul>
+    </div>
+
+    <script src="./bundle.js"></script>
+  </body>
+</html>
