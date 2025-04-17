@@ -7,9 +7,9 @@ module.exports = {
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "dist"),
-    clean: true, // Membersihkan direktori output sebelum build baru
+    clean: true,
   },
-  devtool: "inline-source-map", // Berguna untuk debugging di development
+  devtool: "inline-source-map",
   devServer: {
     static: "./dist",
     port: 8080,
@@ -17,8 +17,8 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/index.html",
-      filename: "index.html", // Nama file HTML di direktori output
+      filename: "index.html",
     }),
   ],
-  mode: "development", // Atur ke 'production' untuk build produksi
+  mode: "development",
 };

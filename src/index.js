@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const addNoteForm = document.getElementById("add-note-form");
 
   async function renderNotes() {
-    showLoading();
+    await showLoading();
     try {
       const response = await getAllNotes();
       console.log("Response FROM getAllNotes", response);
@@ -43,11 +43,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const body = bodyInput.value.trim();
 
     if (title && body) {
-      showLoading();
-      console.log(
-        "Data yang dikirim :",
-        JSON.stringify({ title: title, body: body }),
-      );
+      await showLoading();
+
       try {
         const response = await createNote(title, body);
         const { status, message, data } = response;
@@ -55,10 +52,11 @@ document.addEventListener("DOMContentLoaded", () => {
         if (status !== "success") {
           throw new Error(message || "Failed to add note");
         }
-
         titleInput.value = "";
         bodyInput.value = "";
-        await renderNotes();
+        renderNotes();
+
+        console.log("After renderNotes()");
       } catch (error) {
         alert(`Failed to add note: ${error.message}`);
       } finally {
@@ -73,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (event.target.classList.contains("delete-button")) {
       const noteId = event.target.dataset.id;
       if (confirm("Are you sure you want to delete this note?")) {
-        showLoading();
+        await showLoading();
         try {
           const response = await deleteNote(noteId);
           const { status, message } = response;
@@ -83,6 +81,8 @@ document.addEventListener("DOMContentLoaded", () => {
           }
 
           await renderNotes();
+
+          console.log("renderNotes() called after delete");
         } catch (error) {
           alert(`Failed to delete note: ${error.message}`);
         } finally {

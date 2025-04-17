@@ -1,5 +1,6 @@
 // src/loading.js
 export function showLoading() {
+  return new Promise(resolve  =>{
   const loadingElement = document.createElement("div");
   loadingElement.id = "loading-indicator";
   loadingElement.textContent = "Loading...";
@@ -14,6 +15,11 @@ export function showLoading() {
   loadingElement.style.borderRadius = "5px";
   loadingElement.style.zIndex = "1000";
   document.body.appendChild(loadingElement);
+
+  setTimeout( () => {
+    resolve();
+  }, 1000);
+  })
 }
 
 export function hideLoading() {
