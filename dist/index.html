@@ -1,10 +1,10 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Notes App</title><style>body {
+<!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Notes App</title><style>/* Gaya CSS dasar */
+      body {
         font-family: sans-serif;
         margin: 20px;
       }
 
-      h1,
-      h2 {
+      h1, h2 {
         text-align: center;
       }
 
@@ -34,7 +34,7 @@
         box-sizing: border-box;
       }
 
-      #note-form button {
+      #note-form button[type="submit"] {
         padding: 10px 15px;
         background-color: #007bff;
         color: white;
@@ -50,22 +50,25 @@
       #notes-list {
         list-style: none;
         padding: 0;
+        display: grid; /* Aktifkan CSS Grid */
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Layout responsif dengan lebar minimum 300px */
+        grid-gap: 15px; /* Jarak antar item */
       }
 
       .note-item {
         border: 1px solid #eee;
         padding: 15px;
-        margin-bottom: 10px;
         border-radius: 5px;
         background-color: #f9f9f9;
         display: flex;
-        justify-content: space-between;
-        align-items: center;
+        flex-direction: column; /* Atur elemen di dalam item menjadi kolom */
+        justify-content: space-between; /* Distribusikan ruang antara judul, isi, dan tombol */
+        min-height: 150px; /* Tinggi minimum untuk setiap catatan */
       }
 
       .note-item h3 {
         margin-top: 0;
-        margin-bottom: 5px;
+        margin-bottom: 10px;
       }
 
       .note-item .delete-button {
@@ -75,6 +78,7 @@
         padding: 8px 12px;
         border-radius: 3px;
         cursor: pointer;
+        margin-top: 10px; /* Berikan sedikit jarak dari isi catatan */
       }
 
       #loading-indicator {
@@ -87,4 +91,4 @@
         color: white;
         border-radius: 5px;
         z-index: 1000;
-      }</style><script defer="defer" src="bundle.js"></script></head><body><h1>My Simple Notes App</h1><div id="note-form"><h2>Add New Note</h2><form id="add-note-form"><div><label for="title">Title:</label> <input id="title" name="title" required/></div><div><label for="body">Body:</label> <textarea id="body" name="body" rows="5" required></textarea></div><button type="submit">Add Note</button></form></div><div id="notes-container"><h2>Your Notes</h2><ul id="notes-list"></ul></div><script src="./bundle.js"></script></body></html>
+      }</style><script defer="defer" src="bundle.js"></script></head><body><h1>My Simple Notes App</h1><div id="note-form"><h2>Add New Note</h2><form id="add-note-form"><div><label for="title">Title:</label> <input id="title" name="title" required/></div><div><label for="body">Body:</label> <textarea id="body" name="body" rows="5" required></textarea></div><button type="submit">Add Note</button></form></div><div id="notes-container"><h2>Your Notes</h2><ul id="notes-list"></ul></div></body></html>
